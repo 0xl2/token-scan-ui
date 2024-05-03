@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import {
   useAddress,
   useDisconnect,
-  useMetamask,
   useConnect,
   metamaskWallet,
   useNetworkMismatch,
@@ -29,7 +28,7 @@ export const WalletConnect = () => {
   const switchNetwork = async (): Promise<void> => {
     if (isMismatched) {
       try {
-        await switchChain(ChainId.Goerli);
+        await switchChain(ChainId.Mainnet);
       } catch (err) {
         showNotification("You are on wrong network", NotificationType.ERROR);
       }

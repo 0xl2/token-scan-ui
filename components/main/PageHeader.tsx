@@ -1,14 +1,14 @@
 import { WalletConnect } from "../common/WalletConnect";
 import { useAddress, useNetworkMismatch } from "@thirdweb-dev/react";
 
-export const ListHeader = () => {
+export const PageHeader = () => {
   const address = useAddress();
   const isMismatched = useNetworkMismatch();
 
   return (
     <header className="bg-white">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">

@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         hideProgressBar={false}
       />
       <ThirdwebProvider
-        activeChain={ChainId.Goerli}
+        activeChain={ChainId.Mainnet}
         supportedWallets={[embeddedWallet(), metamaskWallet()]}
         clientId={process.env.NEXT_PUBLIC_THIRDWEB_PROJECT_ID}
       >
