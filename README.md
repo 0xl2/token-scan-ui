@@ -37,6 +37,8 @@ yarn install
 - Create `.env` file, You can rename the file called `.env.example` to `.env`
 - Create ThirdWeb project and update `NEXT_PUBLIC_THIRDWEB_PROJECT_ID` in `.env` file with your own value
   [How to get thirdweb api key](https://portal.thirdweb.com/api-keys)
+- Get Coingecko api key and update `COINGECKO_KEY` in `.env` file with your own value, you can create demo account and get api key
+  [How to get Coingecko api key](https://www.coingecko.com/en/api/pricing)
 
 ### Finally run the app
 
@@ -58,5 +60,4 @@ npm run build
 yarn build
 ```
 
-- Then upload `dist` folder to your server
-- Or you can use [Vercel](https://vercel.com/) easily for the deployment
+- [Deployed vercel link](https://token-scan-ui.vercel.app/)
