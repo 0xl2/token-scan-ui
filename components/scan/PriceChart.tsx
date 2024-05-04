@@ -1,5 +1,6 @@
 import { Chart } from "react-google-charts";
 
+import { Loader } from "../common/Loader";
 import { IToken } from "../../utils/types";
 import { useTokenPrice } from "../../hooks/useTokenPrice";
 
@@ -27,7 +28,7 @@ export const PriceChart = ({ token }: Props) => {
     chartArea: { width: "80%", height: "70%" },
   };
 
-  return (
+  return showPrices && showPrices.length > 0 ? (
     <Chart
       chartType="AreaChart"
       width="100%"
@@ -35,5 +36,7 @@ export const PriceChart = ({ token }: Props) => {
       data={showPrices}
       options={options}
     />
+  ) : (
+    <Loader />
   );
 };

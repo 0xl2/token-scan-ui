@@ -25,7 +25,7 @@ export const TokenInfo = ({ token }: Props) => {
 
   return (
     <div className="font-bold text-xl m-2">
-      {token.name.toLocaleUpperCase()} Balance:{" "}
+      {token.name.toLocaleUpperCase()} Token Balance:{" "}
       {decimalLoading || balanceLoading
         ? ""
         : utils.formatUnits(tokenBalance, tokenDecimal) +
