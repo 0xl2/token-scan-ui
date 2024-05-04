@@ -3,6 +3,9 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 import { IToken } from "../../utils/types";
+import { showNotification, NotificationType } from "../../utils/notification";
+
+import { Loader } from "../common/Loader";
 import { TokenItem } from "../common/TokenItem";
 import { SearchIcon } from "../common/SearchIcon";
 
@@ -15,6 +18,7 @@ type Props = {
 export const SearchModal = ({ open, setOpen, setToken }: Props) => {
   const cancelButtonRef = useRef(null);
 
+  const [load, setLoad] = useState(false);
   const [search, setSearch] = useState("");
   const [tokens, setTokens] = useState<IToken[]>([]);
 
@@ -25,17 +29,25 @@ export const SearchModal = ({ open, setOpen, setToken }: Props) => {
 
   const updateSearch = async (tokenVal: string) => {
     setSearch(tokenVal);
+    setLoad(true);
 
     if (tokenVal.length > 1) {
-      const reqResp = await axios.get(`api/tokenscan`, {
-        params: {
-          token: tokenVal,
-        },
-      });
-      setTokens(reqResp.data);
+      try {
+        const reqResp = await axios.get(`api/tokenscan`, {
+          params: {
+            token: tokenVal,
+          },
+        });
+        setTokens(reqResp.data);
+      } catch (err) {
+        setTokens([]);
+        showNotification("Token scan failed", NotificationType.ERROR);
+      }
     } else {
       setTokens([]);
     }
+
+    setLoad(false);
   };
 
   return (
@@ -82,14 +94,20 @@ export const SearchModal = ({ open, setOpen, setToken }: Props) => {
                       onChange={(e) => updateSearch(e.target.value)}
                     />
                   </div>
-                  <div className="h-64 overflow-x-auto">
-                    {tokens.map((token: IToken) => (
-                      <TokenItem
-                        key={token.address}
-                        token={token}
-                        clickFunc={selectToken}
-                      />
-                    ))}
+                  <div className="h-64 overflow-x-auto mt-1">
+                    {load ? (
+                      <Loader />
+                    ) : (
+                      tokens.map((token: IToken) =>
+                        token.address && token.address.length > 0 ? (
+                          <TokenItem
+                            key={token.address}
+                            token={token}
+                            clickFunc={selectToken}
+                          />
+                        ) : null
+                      )
+                    )}
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">

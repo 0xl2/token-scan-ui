@@ -7,8 +7,14 @@ type Props = {
 
 export const TokenItem = ({ token, clickFunc }: Props) => {
   return (
-    <div className="p-2 cursor-pointer rounded-md hover:bg-slate-300" onClick={() => clickFunc(token)}>
-      {token.name}({token.symbol})
+    <div
+      className="flex p-2 cursor-pointer rounded-md hover:bg-slate-300"
+      onClick={() => clickFunc(token)}
+    >
+      <img src={token.thumb} alt="thumb" />
+      <span className="ml-3">
+        {token.name}({token.symbol})
+      </span>
     </div>
   );
 };

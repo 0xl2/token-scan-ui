@@ -1,10 +1,9 @@
 export const RPC_URL = "https://rpc.ankr.com/ethereum";
 
-export const DEXSCREENER_URL = "https://api.dexscreener.com/latest/dex/";
+export const COINGECKO_URL = "https://api.coingecko.com/api/v3/";
 
-export const COINMARKETCAP_URL =
-  "https://api.coinmarketcap.com/gravity/v4/gravity/global-search";
-export const COINMARKETCAP_LIST_URL =
-  "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/listing";
-
-export const ETHEREUM = "ethereum";
+const COINGECKO_KEY = "CG-i1jHjUuwbMgJvfwGFpTRo5yQ";
+export const COINGECKO_HEADER = {
+  accept: "application/json",
+  "x-cg-demo-api-key": COINGECKO_KEY,
+};

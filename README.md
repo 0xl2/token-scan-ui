@@ -9,6 +9,7 @@ Frontend for NFT collection mint and listing
 - [Typescript](https://www.typescriptlang.org/)
 - [ThirdWeb](https://thirdweb.com/)
 - [TailwindCSS](https://tailwindcss.com/)
+- [ReactGooldCharts](https://www.react-google-charts.com/examples)
 
 ## Getting Started
 

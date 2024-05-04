@@ -7,11 +7,7 @@ export const TokenScan = () => {
 
   return (
     <div className="container mx-auto pt-5">
-      {walletAddr && walletAddr.length > 0 ? (
-        <ScanView />
-      ) : (
-        <div>Please connect wallet</div>
-      )}
+      {walletAddr && walletAddr.length > 0 ? <ScanView /> : null}
     </div>
   );
 };
