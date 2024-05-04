@@ -1,17 +1,14 @@
 import { useAddress } from "@thirdweb-dev/react";
-import React, { useEffect, useState } from "react";
 
-import { Spinner } from "../common/Spinner";
+import { ScanView } from "./ScanView";
 
 export const TokenScan = () => {
-  const [loading, setLoading] = useState(true);
-
   const walletAddr = useAddress();
 
   return (
-    <div className="container mx-auto px-4 pt-10">
+    <div className="container mx-auto pt-5">
       {walletAddr && walletAddr.length > 0 ? (
-        <Spinner visible={loading} />
+        <ScanView />
       ) : (
         <div>Please connect wallet</div>
       )}
