@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "UNFT",
-  "short_name": "UNFT",
-  "description": "Frontend for UNFT",
+  "name": "TokenScan",
+  "short_name": "TS",
+  "description": "Frontend for TokenScan",
   "icons": [
     {
       "src": "icons/icon-192x192.png",

@@ -1,6 +1,6 @@
 ## Token Scan UI
 
-Frontend for NFT collection mint and listing
+Frontend for Token Scan
 
 ### Built With
 

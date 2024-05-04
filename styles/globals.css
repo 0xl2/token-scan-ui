@@ -2,7 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-.nft-item-img {
-  height: 15rem;
-  width: 100%;
-}
