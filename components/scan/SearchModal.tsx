@@ -96,7 +96,9 @@ export const SearchModal = ({ open, setOpen, setToken }: Props) => {
                   </div>
                   <div className="h-64 overflow-x-auto mt-1">
                     {load ? (
-                      <Loader />
+                      <div className="flex flex-1 flex-col items-center">
+                        <Loader />
+                      </div>
                     ) : (
                       tokens.map((token: IToken) =>
                         token.address && token.address.length > 0 ? (

@@ -28,15 +28,20 @@ export const PriceChart = ({ token }: Props) => {
     chartArea: { width: "80%", height: "70%" },
   };
 
-  return showPrices && showPrices.length > 0 ? (
-    <Chart
-      chartType="AreaChart"
-      width="100%"
-      height="400px"
-      data={showPrices}
-      options={options}
-    />
-  ) : (
-    <Loader />
+  return (
+    <div className="flex flex-1 flex-col items-center">
+      {showPrices && showPrices.length > 1 ? (
+        <Chart
+          chartType="AreaChart"
+          width="100%"
+          height="400px"
+          data={showPrices}
+          options={options}
+          loader={<Loader />}
+        />
+      ) : (
+        <Loader />
+      )}
+    </div>
   );
 };
