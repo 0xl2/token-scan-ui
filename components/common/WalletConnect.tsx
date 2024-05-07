@@ -7,6 +7,7 @@ import {
   useNetworkMismatch,
   useSwitchChain,
   ChainId,
+  useChainId
 } from "@thirdweb-dev/react";
 
 import { showNotification, NotificationType } from "../../utils/notification";
@@ -15,6 +16,7 @@ export const WalletConnect = () => {
   const metamaskConfig = metamaskWallet();
 
   const address = useAddress();
+  const chainId = useChainId();
   const disconnect = useDisconnect();
   const switchChain = useSwitchChain();
   const isMismatched = useNetworkMismatch();
@@ -23,7 +25,7 @@ export const WalletConnect = () => {
 
   useEffect(() => {
     switchNetwork();
-  }, [address]);
+  }, [address, chainId]);
 
   const switchNetwork = async (): Promise<void> => {
     if (isMismatched) {
