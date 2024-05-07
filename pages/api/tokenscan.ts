@@ -19,7 +19,7 @@ export default async function handler(
             query: token,
           },
         });
-        const searchCoins = _.get(searchResp, "data.coins");
+        const searchCoins = _.get(searchResp, "data.coins", []);
 
         const tokensResp = await axios.get(`${COINGECKO_URL}coins/list`, {
           headers: COINGECKO_HEADER,
@@ -30,13 +30,13 @@ export default async function handler(
         const tokens = _.get(tokensResp, "data");
 
         const tokenArr = searchCoins.map((coin: any) => {
-          let contractAddr = "";
-          for (const tokenItem of tokens) {
-            if (tokenItem.id == coin.id) {
-              contractAddr = _.get(tokenItem, "platforms.ethereum");
-              break;
-            }
-          }
+          const contractAddr = tokens
+            .map((tokenItem: any) =>
+              tokenItem.id === coin.id
+                ? _.get(tokenItem, "platforms.ethereum")
+                : null
+            )
+            .find((addr: string) => addr !== null);
 
           return {
             id: coin.id,

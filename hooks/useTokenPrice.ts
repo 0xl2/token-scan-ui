@@ -16,7 +16,7 @@ export const useTokenPrice = (token: IToken) => {
         },
       })
       .then((priceResp) => {
-        const priceArr = _.get(priceResp, "data");
+        const priceArr = _.get(priceResp, "data", []);
 
         const priceList = priceArr.map((priceItem: any) => {
           const selDate = new Date(priceItem[0]).toDateString();
