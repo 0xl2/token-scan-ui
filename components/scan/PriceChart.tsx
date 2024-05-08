@@ -18,7 +18,7 @@ export const PriceChart = ({ token }: Props) => {
     if (minValue > price[1]) minValue = price[1];
     if (maxValue < price[1]) maxValue = price[1];
   }
-  const showPrices = [["", ""]].concat(prices);
+  const showPrices = [["", "Price"]].concat(prices);
 
   if (showPrices.length == 0) return null;
 

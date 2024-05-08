@@ -1,6 +1,7 @@
+import _ from "lodash";
 import axios from "axios";
-import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useRef, useState, useEffect, useCallback } from "react";
 
 import { IToken } from "../../utils/types";
 import { showNotification, NotificationType } from "../../utils/notification";
@@ -27,8 +28,11 @@ export const SearchModal = ({ open, setOpen, setToken }: Props) => {
     setOpen(false);
   };
 
-  const updateSearch = async (tokenVal: string) => {
-    setSearch(tokenVal);
+  useEffect(() => {
+    debounceSearch(search);
+  }, [search]);
+
+  const doSearch = async (tokenVal: string) => {
     setLoad(true);
 
     if (tokenVal.length > 1) {
@@ -49,6 +53,8 @@ export const SearchModal = ({ open, setOpen, setToken }: Props) => {
 
     setLoad(false);
   };
+
+  const debounceSearch = useCallback(_.debounce(doSearch, 500), []);
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -91,7 +97,7 @@ export const SearchModal = ({ open, setOpen, setToken }: Props) => {
                       placeholder="Search"
                       className="w-full border-0 placeholder:text-gray-500 focus:ring-0 bg-gray-300"
                       value={search}
-                      onChange={(e) => updateSearch(e.target.value)}
+                      onChange={(e) => setSearch(e.target.value)}
                     />
                   </div>
                   <div className="h-64 overflow-x-auto mt-1">
