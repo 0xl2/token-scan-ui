@@ -26,6 +26,10 @@ export const PriceChart = ({ token }: Props) => {
     // hAxis: { titleTextStyle: { color: "#333" } },
     vAxis: { minValue: minValue, maxValue: maxValue },
     chartArea: { width: "80%", height: "70%" },
+    legend: { position: "top" },
+    isStacked: true,
+    height: 300,
+    is3D: true
   };
 
   return (
